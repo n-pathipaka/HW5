@@ -1,4 +1,4 @@
-function idx = HAClustering(X, k, visualize2D)
+function idx = HAC3A(X, k, visualize2D)
 % Run the hierarchical agglomerative clustering algorithm.
 % 
 % The algorithm is conceptually simple:
@@ -192,20 +192,20 @@ function idx = HAClustering(X, k, visualize2D)
 
 
         cluster_i = X(idx(idx==i),:);
-        for a=1:m
+        for p=1:m
             min_dist = realmax;
-            cluster = X(idx==a,:);
-            if a == i || size(cluster,1) == 0
+            cluster = X(idx==p,:);
+            if p == i || size(cluster,1) == 0
                 continue
             end
-            for b=1:size(cluster_i,1)
+            for q=1:size(cluster_i,1)
                 for c=1:size(cluster,1)
-                    dist = pdist2(cluster_i(b,:), cluster(c,:));
+                    dist = pdist2(cluster_i(q,:), cluster(c,:));
                     min_dist = min(min_dist, dist);
                 end
             end
-            dists(i,a) = min_dist;
-            dists(a,i) = min_dist;
+            dists(i,p) = min_dist;
+            dists(p,i) = min_dist;
         end
         dists(i,i) = Inf;
         

@@ -1,4 +1,4 @@
-function HAClusteringTest(visualize)
+function HAC3ATest(visualize)
 % Tests your implementation of HAClustering.m by comparing its output on a
 % test dataset with the output of our reference implementation on the same
 % dataset.
@@ -11,12 +11,9 @@ function HAClusteringTest(visualize)
         visualize = true;
     end
     load('test_data/HAClusteringTest.mat');
-    my_idx = HAClustering(X, k, visualize);
-    if all(my_idx == idx)
-        disp(['Congrats! Your HAClustering algorithm produces the same ' ...
-             'output as ours.']);
-    else
-        disp(['Uh oh - Your HAClustring algorithm produces a different ' ...
-              ' output from ours.']);
-    end
+    % Select a random subset from X of 20 points to make the data more
+    % sparse to better see the results of this algorithm.
+    X_1 = X(randperm(20),:);
+    my_idx = HAC3A(X_1, k, visualize); 
+    
 end

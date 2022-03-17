@@ -104,8 +104,8 @@ function idx = HAClustering(X, k, visualize2D)
         i = 0;
         j = 0;
 
-        min_dist = min(min(dists));
-        [i,j] = find(dists==min_dist, 1);
+        minDist = min(min(dists));
+        [i,j] = find(dists==minDist, 1);
 
       
 
