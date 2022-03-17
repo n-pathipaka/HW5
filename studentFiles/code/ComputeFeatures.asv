@@ -19,28 +19,9 @@ function features = ComputeFeatures(img)
     %%% extra features like edges, gradients( may help cluster together of
     %%% similar texture %%%%
 
-   features(:,:,1:3) = img;
-
     gray = im2gray(img); %%% converting image to gray scale to get the edges %%%
 
     edge = edge(gray, 'canny'); %% using canny computing edges
-
-    features(:,:,6) = edges;
-
-    col = (1:width);
-
-    row = (1:height)';
-
-    features(:,:,5) = repmat(row, 1, width);
-
-    features(:,:,4) = repmat(col, height, 1);
-
-    gradients = imgradient(gs, 'prewitt');
-
-
-    features(:,:,7) = gradients;
-
-
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %                                                                         %
     %                              YOUR CODE HERE                             %
