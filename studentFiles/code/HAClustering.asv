@@ -107,9 +107,11 @@ function idx = HAClustering(X, k, visualize2D)
         min_dist = min(min(dists));
         [i,j] = find(dists==min_dist, 1);
 
-      
-
-        
+        if i > j        
+            p = i;
+            i = j;
+            j = p;
+        end
 
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -139,8 +141,6 @@ function idx = HAClustering(X, k, visualize2D)
         % +Inf.
         
         % Assign all points currently in cluster j to cluster i.
-
-        idx(idx==j) = i;
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %                                                                     %
         %                            YOUR CODE HERE                           %
@@ -157,9 +157,6 @@ function idx = HAClustering(X, k, visualize2D)
         % cluster j to +Inf.
         % HINT: You should be able to compute both updated cluster
         % centroids in O(1) time.
-
-        centroids(j,:) = Inf(1, n);
-        centroids(i,:) = mean(X(idx==i,:), 1);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %                                                                     %
         %                            YOUR CODE HERE                           %
@@ -189,18 +186,6 @@ function idx = HAClustering(X, k, visualize2D)
         % distances from clusters i and j to all other clusters.
         % Hint: You might find the pdist2 function useful.
         % Hint: Remember that the diagonal of dists must be +Inf.
-
-
-        for a=1:m
-            dists(i,a) = pdist2(centroids(i,:), centroids(a,:));
-            dists(a,i) = pdist2(centroids(i,:), centroids(a,:));
-        end
-        dists(i,i) = Inf;
-        
-        dists(j,:) = Inf(1,m);
-        dists(:,j) = Inf(1,m);
-
-        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %                                                                     %
         %                            YOUR CODE HERE                           %

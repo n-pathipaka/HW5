@@ -191,15 +191,26 @@ function idx = HAClustering(X, k, visualize2D)
         % Hint: Remember that the diagonal of dists must be +Inf.
 
 
+        cluster_i = X(idx(idx==i),:);
         for a=1:m
-            dists(i,a) = pdist2(centroids(i,:), centroids(a,:));
-            dists(a,i) = pdist2(centroids(i,:), centroids(a,:));
+            min_dist = realmax;
+            cluster = X(idx==a,:);
+            if a == i || size(cluster,1) == 0
+                continue
+            end
+            for b=1:size(cluster_i,1)
+                for c=1:size(cluster,1)
+                    dist = pdist2(cluster_i(b,:), cluster(c,:));
+                    min_dist = min(min_dist, dist);
+                end
+            end
+            dists(i,a) = min_dist;
+            dists(a,i) = min_dist;
         end
         dists(i,i) = Inf;
         
         dists(j,:) = Inf(1,m);
         dists(:,j) = Inf(1,m);
-
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %                                                                     %
