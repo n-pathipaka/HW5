@@ -21,4 +21,17 @@ function featuresNorm = NormalizeFeatures(features)
 %                HINT: The functions mean and std may be useful                %
 %                                                                              %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    featureNum = size(features, 3);
+    height = size(features, 1);
+    width = size(features, 2);
+    for i=1:featureNum
+        mean_val = mean(features(:,:,i),'all');
+        stdev = std(features(:,:,i),0,'all');
+        for j=1:height
+            for k=1:width
+                featuresNorm(j,k,i) = (featuresNorm(j,k,i)-mean_val)/stdev;
+            end
+        end
+    end
+
 end
