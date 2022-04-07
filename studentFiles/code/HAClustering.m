@@ -178,7 +178,8 @@ function idx = HAClustering(X, k, visualize2D)
         %                            YOUR CODE HERE                           %
         %                                                                     %
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        
+        cluster_sizes(j) = 0;
+        cluster_sizes(i) = size(idx(idx==i), 1);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %                                                                     %
         %                            END YOUR CODE                            %
