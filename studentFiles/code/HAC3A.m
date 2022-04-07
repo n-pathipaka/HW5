@@ -172,7 +172,7 @@ function idx = HAC3A(X, k, visualize2D)
         for p=1:m
             min_dist = realmax;
             cluster = X(idx==p,:);
-            if p == i || size(cluster,1) == 0
+            if p == i || size(cluster,1) == 0 || cluster_sizes(p) == 0
                 continue
             end
             for q=1:size(cluster_i,1)

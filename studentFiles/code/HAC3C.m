@@ -105,7 +105,7 @@ function idx = HAC3C(X, k, visualize2D)
         cluster_i = X(idx(idx==i),:);
         for p=1:m
             cluster = X(idx==p,:);
-            if p == i || size(cluster,1) == 0
+            if p == i || size(cluster,1) == 0 || cluster_sizes(p) == 0
                 continue
             end
             sum = 0;

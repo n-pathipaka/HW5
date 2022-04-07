@@ -106,7 +106,7 @@ function idx = HAC3B(X, k, visualize2D)
         for a=1:m
             max_dist = 0;
             cluster = X(idx(idx==a),:);
-            if a == i || size(cluster,1) == 0
+            if a == i || size(cluster,1) == 0 || cluster_sizes(a) == 0
                 continue
             end
             for b=1:size(cluster_i,1)
