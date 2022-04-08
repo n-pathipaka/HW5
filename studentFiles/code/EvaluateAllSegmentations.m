@@ -7,8 +7,8 @@
 load('../cats.mat');
 
 % Set the parameters for segmentation.
-numClusters = 5;
-clusteringMethod = 'kmeans';
+numClusters = 3;
+clusteringMethod = 'hac';
 featureFn = @ComputeColorFeatures;
 normalizeFeatures = true;
 

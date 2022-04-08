@@ -1,3 +1,5 @@
+
+
 function HAC3CTest(visualize)
 % Tests your implementation of HAClustering.m by comparing its output on a
 % test dataset with the output of our reference implementation on the same

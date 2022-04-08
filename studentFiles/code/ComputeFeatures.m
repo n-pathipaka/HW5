@@ -19,9 +19,13 @@ function features = ComputeFeatures(img)
     %%% extra features like edges, gradients( may help cluster together of
     %%% similar texture %%%%
 
-   features(:,:,1:3) = img;
+    features(:,:,1:3) = img;
 
     gray = im2gray(img); %%% converting image to gray scale to get the edges %%%
+
+    % Compute edges using Canny method.
+    % This may help bring outliers sticking out of an area of the image
+    % into the correct cluster (i.e. hairs sticking out on a cat).
 
     edge = edge(gray, 'canny'); %% using canny computing edges
 
@@ -34,6 +38,12 @@ function features = ComputeFeatures(img)
     features(:,:,5) = repmat(row, 1, width);
 
     features(:,:,4) = repmat(col, height, 1);
+
+    % Compute directional gradients using prewitt method.
+    % This may help cluster together areas of similar texture, since more
+    % textured surfaces in an image will have more changes in direction
+    % (i.e. gravel) whereas less textured surfaces will have less changes
+    % in direction (i.e. a flat white wall).
 
     gradients = imgradient(gs, 'prewitt');
 

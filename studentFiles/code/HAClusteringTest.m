@@ -10,7 +10,10 @@ function HAClusteringTest(visualize)
     if nargin < 1
         visualize = true;
     end
-    load('test_data/HAClusteringTest.mat');
+    if visualize
+		disp('Hit Enter to run the next iteration')
+	end
+    load(['test_data/HAClusteringTest.mat']);
     my_idx = HAClustering(X, k, visualize);
     if all(my_idx == idx)
         disp(['Congrats! Your HAClustering algorithm produces the same ' ...

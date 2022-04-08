@@ -10,10 +10,11 @@ function HAC3ATest(visualize)
     if nargin < 1
         visualize = true;
     end
+   
+
     load('test_data/HAClusteringTest.mat');
-    % Select a random subset from X of 20 points to make the data more
-    % sparse to better see the results of this algorithm.
     X_1 = X(randperm(20),:);
     my_idx = HAC3A(X_1, k, visualize); 
+    
     
 end

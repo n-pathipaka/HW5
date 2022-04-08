@@ -59,7 +59,7 @@ function idx = KMeansClustering(X, k, visualize2D, centers)
     while true        
         % Store old cluster assignments
         old_idx = idx;
-        
+        disp(iter);
         % Compute distances from each point to the centers and assign each
         % point to the closest cluster.
         for i = 1:m
@@ -99,4 +99,5 @@ function idx = KMeansClustering(X, k, visualize2D, centers)
             break;
         end
     end
+    idx;
 end
